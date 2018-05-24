@@ -1,0 +1,13 @@
+{
+    "name": "tinklabs/bank",
+    "description": "Tink Labs Technical Coding Test - Backend",
+    "minimum-stability": "dev",
+    "require": {
+        "php": ">=7.1.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "TinkLabs\\Bank\\": "src/"
+        }
+    }
+}
