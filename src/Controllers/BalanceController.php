@@ -5,7 +5,7 @@ namespace TinkLabs\Bank\Controllers;
 use Illuminate\Http\Request;
 use Laravel\Lumen\Routing\Controller;
 
-class BankController extends Controller
+class BalanceController extends Controller
 {
    
 
