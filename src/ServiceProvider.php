@@ -25,6 +25,6 @@ class ServiceProvider extends BaseServiceProvider
         // Module config 模块配置
         $this->mergeConfigFrom(
             sprintf(__DIR__ . '/config/%s.php', $this->providerName), $this->providerName
-        );
+        );        
     }
 }
