@@ -4,6 +4,7 @@ namespace TinkLabs\Bank;
 
 use Illuminate\Support\ServiceProvider as BaseServiceProvider;
 use Laravel\Lumen\Application as LumenApplication;
+use TinkLabs\Bank\Services\BankService;
 
 class ServiceProvider extends BaseServiceProvider
 {
@@ -25,6 +26,11 @@ class ServiceProvider extends BaseServiceProvider
         // Module config 模块配置
         $this->mergeConfigFrom(
             sprintf(__DIR__ . '/config/%s.php', $this->providerName), $this->providerName
-        );        
+        ); 
+        
+        // 注入服务类
+        $this->app->singleton('bank', function ($app) {
+            return new BankService;
+        });        
     }
 }

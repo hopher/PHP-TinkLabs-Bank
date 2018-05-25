@@ -4,7 +4,6 @@ namespace TinkLabs\Bank\Controllers;
 
 use Illuminate\Http\Request;
 use Laravel\Lumen\Routing\Controller;
-use TinkLabs\Bank\Models\Account;
 
 class BalanceController extends Controller
 {
@@ -14,15 +13,14 @@ class BalanceController extends Controller
      */
     public function show(Request $request)
     {
-        // 这里假设token = account.id
-        $id = $request->input('id');
-        $account = Account::find('id', $id);
+        $uid = $request->input('uid');
 
-        if (isset($account)) {
+        $balance = app('bank')->getCurrentBalance($uid);
+        if ($balance) {
             return response()->json([
                 'status' => 'success',
                 'data' => [
-                    'balance' => $account->balance,
+                    'balance' => $balance,
                 ],
             ]);
         }

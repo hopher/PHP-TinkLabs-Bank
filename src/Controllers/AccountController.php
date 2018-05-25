@@ -28,7 +28,7 @@ class AccountController extends Controller
 
         try {
             $account = [
-                'id' => Snowflake::generateId(), // 产生分布式UID
+                'uid' => Snowflake::generateId(), // 产生分布式UID
                 'username' => $username,
                 'password' => md5($password . $salt),
                 'salt' => $salt,
@@ -44,7 +44,7 @@ class AccountController extends Controller
         return response()->json([
             'status' => 'success',
             'data' => [
-                'id' => $account['id'],
+                'uid' => $account['uid'],
                 'username' => $account['username'],
             ],
         ]);
@@ -55,10 +55,10 @@ class AccountController extends Controller
      *
      * @param   int     $it 分布式UUID
      */
-    public function destroy(Request $request, $id)
+    public function destroy(Request $request, $uid)
     {
         $affected_row = Account::where([
-            'id' => $id,
+            'uid' => $uid,
         ])->delete();
 
         if ($affected_row > 0) {
